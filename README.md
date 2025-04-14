@@ -1,5 +1,3 @@
-Certainly! Here's a detailed `README.md` for your **Financial Tracker App** with Login, Signup, and Transaction pages, using JWT for authorization and Redux for state management:
-
 ---
 
 # Financial Tracker App
