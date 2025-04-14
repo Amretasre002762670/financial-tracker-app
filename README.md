@@ -1,70 +1,171 @@
-# Getting Started with Create React App
+Certainly! Here's a detailed `README.md` for your **Financial Tracker App** with Login, Signup, and Transaction pages, using JWT for authorization and Redux for state management:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# Financial Tracker App
 
-In the project directory, you can run:
+This **Financial Tracker App** allows users to sign up, log in, and track their transactions. It uses **JWT (JSON Web Token)** for secure authentication and **Redux** for managing application state. The app is styled using **Tailwind CSS**.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🔑 **User Authentication**: 
+  - **Login** and **Signup** functionality using JWT for secure authentication.
+  - Users are authenticated via JWT tokens, and the app uses the token for subsequent requests.
+  
+- 💳 **Transaction Management**:
+  - After successful login, users are redirected to the **Transaction** page, where they can manage and track their transactions.
+  
+- 🧭 **Routing**:
+  - **Protected routes**: Users are only allowed to access the **Transaction** page after successful login.
+  - Custom error handling for **404 (Page Not Found)** and **500 (Server Error)** pages.
 
-### `npm test`
+- 🎨 **Tailwind CSS**:
+  - The app's UI is styled using Tailwind CSS, which is a utility-first CSS framework.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🔄 **State Management with Redux**:
+  - Redux is used to manage the authentication state, including storing JWT tokens and user details.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Pages & Routes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Route           | Component       | Description                                    |
+|-----------------|-----------------|------------------------------------------------|
+| `/`             | `AuthForm`      | Login page (Login form)                        |
+| `/signup`       | `AuthForm`      | Sign Up page (Signup form)                     |
+| `/home`         | `Transaction`   | Protected route: Transaction page (requires login) |
+| `/serverError`  | `PageNotFound`  | Server error page (500)                        |
+| `*`             | `PageNotFound`  | 404 Page Not Found                             |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Login Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Login Page](./public/Login.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Sign Up Page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Sign Up Page](./public/Signup.png)
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## JWT Authentication
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Upon **Login** or **Sign Up**, a JWT token is generated and returned by the backend.
+- This JWT token is stored in the browser's **sessionStorage** and is included in the header of any subsequent API requests to authenticate the user.
+- The token is stored using `sessionStorage.setItem("token", token)` and can be accessed whenever needed for authorization checks.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Redux for State Management
 
-### Analyzing the Bundle Size
+The application uses **Redux** to manage global state, especially the authentication state. The `authSlice` contains:
+- **User Data**: Stores the logged-in user's username.
+- **JWT Token**: Stores the JWT token required for authenticated requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Here’s how the state is handled:
+- **Login**: When a user successfully logs in, the app dispatches the `login` action to store the token and user data in the Redux store.
+- **Error Handling**: Errors related to authentication (invalid credentials, user not found, etc.) are displayed on the form.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Tailwind CSS
 
-### Advanced Configuration
+Tailwind CSS is used to style the entire application. The app is fully responsive and utilizes utility classes to keep the styling concise.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### How Tailwind CSS is used:
+- Custom utility classes for buttons, inputs, and layouts.
+- Responsive design to ensure the app is usable on all devices.
+- Custom colors and styles to enhance user experience.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## How to Run the Application
 
-### `npm run build` fails to minify
+1. **Clone the repository**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/yourusername/financial-tracker-app.git
+```
+
+2. **Install dependencies**:
+
+```bash
+cd financial-tracker-app
+npm install
+```
+
+3. **Run the app**:
+
+```bash
+npm start
+```
+
+This will start the development server, and you can open the app in your browser at `http://localhost:3000`.
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── AuthForm/        # Login & Signup Forms
+│   ├── Transaction/     # Transaction Page
+│   └── PageNotFound/    # 404 & 500 Error Pages
+├── redux/
+│   └── slices/
+│       └── authSlice.js  # Redux slice for authentication state
+├── App.js               # Main App component with routing
+├── index.js             # Entry point to the application
+├── App.css              # Global styles (Tailwind configurations)
+└── index.css            # Tailwind base styles
+```
+
+---
+
+## Dependencies
+
+The project uses the following dependencies:
+
+- **React**: The UI library used to build the components.
+- **React Router**: For routing and navigation between different pages.
+- **Redux**: For state management (authentication state).
+- **Axios**: For making API requests.
+- **Tailwind CSS**: For styling the components.
+
+### Install dependencies:
+
+```bash
+npm install react-router-dom redux react-redux axios tailwindcss
+```
+
+---
+
+## Custom Error Pages
+
+- **PageNotFound**: Handles unknown routes (404).
+- **ServerError**: Displays a 500 error page for server issues.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+### 🛠️ Built With:
+
+- **React** for the front-end UI.
+- **Tailwind CSS** for styling.
+- **JWT** for authentication.
+- **Redux** for state management.
+
+---
+
+
