@@ -30,10 +30,11 @@ const AuthForm = ({mode = "login"}) => {
             });
 
             if (response.status === 201 || response.status === 200) {
-                const { token, username } = response.data;
+                const { token, id, username } = response.data;
 
                 sessionStorage.setItem("username", username);
                 sessionStorage.setItem("token", token);
+                sessionStorage.setItem("userid", id);
 
                 dispatch(login({ user: username, token }));
 
@@ -72,7 +73,7 @@ const AuthForm = ({mode = "login"}) => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter your username"
-                  className="border-0 border-b-2 border-grey focus:border-[#e549ff]/100 focus:outline-none focus:ring-0 hover:border-[#e549ff]/60 w-full bg-transparent"
+                  className="border-0 border-b-2 border-grey focus:border-[#e549ff]/100 focus:outline-none focus:ring-0 hover:border-[#e549ff]/60 w-full bg-transparent text-white"
                 />
               </div>
               <div className="flex items-center p-4 space-x-2">
@@ -82,7 +83,7 @@ const AuthForm = ({mode = "login"}) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="border-0 border-b-2 border-grey focus:border-b-[#e549ff]/100 focus:outline-none focus:ring-0 hover:border-b-[#e549ff]/60 w-full bg-transparent"
+                  className="border-0 border-b-2 border-grey focus:border-b-[#e549ff]/100 focus:outline-none focus:ring-0 hover:border-b-[#e549ff]/60 w-full bg-transparent text-white"
                 />
               </div>
               <div>

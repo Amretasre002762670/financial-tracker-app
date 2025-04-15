@@ -22,10 +22,11 @@ const Login = () => {
         password
       });
       if (response.status === 200) {
-        const {token, username} = response.data;
+        const {token, username, id} = response.data;
         // set session 
         sessionStorage.setItem("username", username);
         sessionStorage.setItem("token", token);
+        sessionStorage.setItem("userId", id);
 
         dispatch(login({user: username, token})); // dispatch the login action
         setError("");
