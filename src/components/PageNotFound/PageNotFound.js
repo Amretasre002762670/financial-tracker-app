@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const PageNotFound = ({errorType="serverError"}) => {
   
+  useEffect(() => {
+    sessionStorage.clear();
+  }, [])
 
   return (
     <div className="container mx-auto p-4">

@@ -60,8 +60,8 @@ const AuthForm = ({mode = "login"}) => {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-          <div className="bg-[linear-gradient(to_right,_#764BA2,_#b36be8)] p-8 rounded-[5px] shadow-md w-full max-w-md h-[340px]">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100" role="main">
+          <div className="bg-[linear-gradient(to_right,_#764BA2,_#8401e7)] p-8 rounded-[5px] shadow-md w-full max-w-md h-[340px]" role="form">
             <h1 className="text-2xl font-bold mb-4 text-[#ededed] text-center">
               {mode === "signup" ? "Sign Up" : "Login"}
             </h1>
@@ -72,7 +72,7 @@ const AuthForm = ({mode = "login"}) => {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your username"
+                  placeholder="Eg. JohnDoe"
                   className="border-0 border-b-2 border-grey focus:border-[#e549ff]/100 focus:outline-none focus:ring-0 hover:border-[#e549ff]/60 w-full bg-transparent text-white"
                 />
               </div>
@@ -82,7 +82,7 @@ const AuthForm = ({mode = "login"}) => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="Eg. 12345678"
                   className="border-0 border-b-2 border-grey focus:border-b-[#e549ff]/100 focus:outline-none focus:ring-0 hover:border-b-[#e549ff]/60 w-full bg-transparent text-white"
                 />
               </div>
@@ -94,13 +94,13 @@ const AuthForm = ({mode = "login"}) => {
               <div className="flex justify-center p-4">
                 <button
                   type="submit"
-                  className="bg-[#ededed] shadow-custom-gray border-[#8401e7] border-[1.5px] text-[#8401e7] hover:text-white hover:bg-[#8401e7]/100 focus:bg-[#8401e7]/100 font-bold py-2 px-4 rounded-[50px]"
+                  className="bg-[#ededed] shadow-custom-gray border-[#45007e] border-[1.5px] text-[#8401e7] hover:text-white hover:bg-[#45007e] focus:bg-[#45007e]/100 font-bold py-2 px-4 rounded-[50px]"
                 >
                   {mode === "signup" ? "Sign Up" : "Log In"}
                 </button>
               </div>
               <div>
-                    <Link to={mode === "login"? "/signup": "/"} className="underline font-bold text-white hover:text-black shadow-lg">{mode === "login"? "Sign Up": "Log In"}</Link>
+                    <Link to={mode === "login"? "/signup": "/"} className="underline font-bold text-white hover:text-[#e549ff] shadow-lg">{mode === "login"? "Sign Up": "Log In"}</Link>
                 </div>
             </form>
           </div>
