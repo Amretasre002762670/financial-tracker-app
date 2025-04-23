@@ -49,6 +49,10 @@ This **Financial Tracker App** allows users to sign up, log in, and track their 
 
 ![Sign Up Page](./public/Signup.png)
 
+#### Home Page
+
+![Sign Up Page](./public/Home.png)
+
 ---
 
 ## JWT Authentication
